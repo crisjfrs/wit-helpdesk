@@ -11,6 +11,8 @@ Dev Build:
   image: docker:latest
   services:
     - docker:dind
+  tags:
+    - gcp-runner
   script:
     - echo "$DEV_ENV" > .env
     - cat .env
