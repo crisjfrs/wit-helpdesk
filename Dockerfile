@@ -16,6 +16,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
+COPY . /var/www
+
 RUN a2enmod rewrite
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/public
