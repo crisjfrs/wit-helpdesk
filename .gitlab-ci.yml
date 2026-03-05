@@ -7,6 +7,8 @@ variables:
 
 build:
   stage: build
+  tags:
+    - server
   image: docker:latest
   services:
     - docker:dind
