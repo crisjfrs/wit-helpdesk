@@ -23,7 +23,7 @@ deploy:
   tags:
     - server
   script:
-    - cd ~/ticketone
+    - cd /home/wit/ticketone
     - docker compose pull
     - docker compose up -d --force-recreate
   only:
