@@ -6,6 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: ticketone_app
+    restart: always
     working_dir: /var/www
     volumes:
       - .:/var/www
@@ -18,7 +19,8 @@ services:
     image: nginx:alpine
     container_name: ticketone_web
     ports:
-      - "8000:80"
+      - "8010:80"
+    restart: always
     volumes:
       - .:/var/www
       - ./docker/nginx:/etc/nginx/conf.d
