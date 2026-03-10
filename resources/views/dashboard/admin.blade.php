@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Dashboard Admin')
-@section('page-title', 'CICD BERHASIL V3')
+@section('page-title', 'Dashboard Admin')
 
 @section('content')
 <div class="stats-grid">
