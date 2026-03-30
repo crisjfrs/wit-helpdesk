@@ -14,10 +14,15 @@ return new class extends Migration
     {
         // Ubah kolom category menjadi nullable untuk menghindari error ENUM
         // Karena sekarang kita menggunakan category_id saja
-        Schema::table('tickets', function (Blueprint $table) {
-            // Ubah kolom category menjadi nullable
+        if (Schema::getConnection()->getDriverName() === 'sqlite') {
+            // SQLite tidak support ENUM dan MODIFY COLUMN, jadi ubah ke string nullable
+            Schema::table('tickets', function (Blueprint $table) {
+                $table->string('category')->nullable()->change();
+            });
+        } else {
+            // MySQL/other: tetap gunakan ENUM
             DB::statement("ALTER TABLE tickets MODIFY COLUMN category ENUM('hardware', 'software', 'network', 'other') NULL DEFAULT NULL");
-        });
+        }
     }
 
     /**
@@ -25,9 +30,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('tickets', function (Blueprint $table) {
-            // Kembalikan ke default 'other' jika diperlukan
+        if (Schema::getConnection()->getDriverName() === 'sqlite') {
+            Schema::table('tickets', function (Blueprint $table) {
+                $table->string('category')->default('other')->nullable(false)->change();
+            });
+        } else {
             DB::statement("ALTER TABLE tickets MODIFY COLUMN category ENUM('hardware', 'software', 'network', 'other') NOT NULL DEFAULT 'other'");
-        });
+        }
     }
 };
