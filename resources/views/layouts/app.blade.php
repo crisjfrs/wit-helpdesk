@@ -15,7 +15,13 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h2><i class="fas fa-headset"></i> Helpdesk</h2>
+                <div class="sidebar-brand">
+                    <div class="sidebar-brand-mark">T</div>
+                    <div class="sidebar-brand-copy">
+                        <h2>TicketOne</h2>
+                        <p>Helpdesk Dashboard</p>
+                    </div>
+                </div>
             </div>
             <ul class="sidebar-menu">
                 <li>

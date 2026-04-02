@@ -3,16 +3,20 @@
 @section('title', 'Login - Helpdesk System')
 
 @section('content')
-<div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(120deg, #140a2a 0%, #241046 62%, #341a67 100%);">
-    <div class="card" style="width: 100%; max-width: 400px; margin: 20px;">
-        <div class="card-header" style="border: none; justify-content: center;">
-            <h2 style="color: var(--primary);">
-                <i class="fas fa-headset"></i> Helpdesk System
-            </h2>
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-card-header">
+            <div class="auth-brand">
+                <div class="auth-brand-mark"><i class="fas fa-headset"></i></div>
+                <div>
+                    <div class="auth-card-title">Helpdesk System</div>
+                    <div class="auth-card-subtitle">Silakan login untuk melanjutkan</div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
+        <div class="auth-card-body">
             @if($errors->any())
-                <div class="alert alert-danger" style="margin-bottom: 20px;">
+                <div class="alert alert-danger">
                     <i class="fas fa-exclamation-circle"></i>
                     @foreach($errors->all() as $error)
                         <div>{{ $error }}</div>
@@ -55,13 +59,13 @@
                 </div>
 
                 <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
-                    <label style="display: flex; align-items: center; cursor: pointer;">
+                    <label style="display: flex; align-items: center; cursor: pointer; color: #e5e7eb;">
                         <input type="checkbox" name="remember" style="margin-right: 8px;">
                         <span>Ingat saya</span>
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <button type="submit" class="btn btn-primary w-100">
                     <i class="fas fa-sign-in-alt"></i> Login
                 </button>
             </form>
