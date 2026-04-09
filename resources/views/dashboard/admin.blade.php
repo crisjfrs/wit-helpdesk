@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Dashboard Admin')
-@section('page-title', 'Dashboard Admin')
+@section('page-title', 'Tytyd Admin')
 
 @section('content')
 <div class="dashboard-shell">
