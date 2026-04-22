@@ -53,6 +53,8 @@ class UserController extends Controller
 
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
+        $data['telegram_chat_id'] = trim((string) ($data['telegram_chat_id'] ?? '')) ?: null;
+        $data['telegram_notifications_enabled'] = $request->boolean('telegram_notifications_enabled');
 
         User::create($data);
 
@@ -88,6 +90,8 @@ class UserController extends Controller
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'telegram_chat_id' => ['nullable', 'string', 'max:30', 'regex:/^-?\\d+$/'],
+            'telegram_notifications_enabled' => 'nullable|boolean',
         ];
 
         // Admin can update role
@@ -96,6 +100,8 @@ class UserController extends Controller
         }
 
         $data = $request->validate($rules);
+        $data['telegram_chat_id'] = trim((string) ($data['telegram_chat_id'] ?? '')) ?: null;
+        $data['telegram_notifications_enabled'] = $request->boolean('telegram_notifications_enabled');
 
         // Only update password if provided
         if ($request->filled('password')) {

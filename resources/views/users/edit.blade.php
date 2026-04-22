@@ -36,6 +36,18 @@
             @endif
 
             <div class="form-group">
+                <label class="form-label">Telegram Chat ID</label>
+                <input type="text" name="telegram_chat_id" class="form-control" value="{{ old('telegram_chat_id', $user->telegram_chat_id) }}" placeholder="Contoh: -1001234567890">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label d-flex align-items-center gap-2">
+                    <input type="checkbox" name="telegram_notifications_enabled" value="1" {{ old('telegram_notifications_enabled', $user->telegram_notifications_enabled) ? 'checked' : '' }}>
+                    Aktifkan notifikasi Telegram
+                </label>
+            </div>
+
+            <div class="form-group">
                 <label class="form-label">Password Baru (Kosongkan jika tidak ingin mengubah)</label>
                 <div class="password-wrapper">
                     <input type="password" name="password" id="password" class="form-control">
