@@ -9,7 +9,7 @@
         <h3><i class="fas fa-ticket-alt"></i> {{ $ticket->ticket_number }}</h3>
         <div>
             @can('update', $ticket)
-            <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-sm btn-warning">
+            <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-sm btn-warning btn-action-edit">
                 <i class="fas fa-edit"></i> Edit
             </a>
             @endcan

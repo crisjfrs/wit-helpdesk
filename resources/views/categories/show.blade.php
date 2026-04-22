@@ -8,7 +8,7 @@
     <div class="card-header">
         <h3><i class="fas fa-tag"></i> Detail Kategori</h3>
         <div>
-            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-warning">
+            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-warning btn-action-edit">
                 <i class="fas fa-edit"></i> Edit
             </a>
             <a href="{{ route('categories.index') }}" class="btn btn-sm btn-secondary">Kembali</a>
@@ -67,7 +67,7 @@
                             <td><span class="badge status-{{ str_replace('_', '-', $ticket->status) }}">{{ ucfirst(str_replace('_', ' ', $ticket->status)) }}</span></td>
                             <td>{{ $ticket->created_at->format('d/m/Y') }}</td>
                             <td>
-                                <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary">Detail</a>
+                                <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary btn-action-detail">Detail</a>
                             </td>
                         </tr>
                         @endforeach

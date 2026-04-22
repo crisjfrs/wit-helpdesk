@@ -17,7 +17,7 @@
             <div class="sidebar-header">
                 <div class="sidebar-brand">
                     @if(file_exists(public_path('images/logo-wit.png')))
-                        <img src="{{ asset('images/logo-wit.png') }}" alt="WIT Helpdesk" class="sidebar-brand-logo">
+                        <img src="{{ asset('images/logo-wit.png') }}" alt="WIT Helpdesk" class="sidebar-brand-logo" width="38" height="38">
                     @else
                         <div class="sidebar-brand-mark">W</div>
                     @endif

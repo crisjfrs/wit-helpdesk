@@ -11,7 +11,7 @@
             Buat laporan cepat, pantau progres penanganan, dan lihat update tiket dalam satu tampilan yang lebih rapi.
         </p>
         <div class="hero-actions">
-            <a href="{{ route('tickets.create') }}" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Buat Tiket Baru</a>
+            <a href="{{ route('tickets.create') }}" class="btn btn-sm btn-success btn-action-create"><i class="fas fa-plus"></i> Buat Tiket Baru</a>
             <a href="{{ route('tickets.index') }}" class="btn btn-sm btn-outline">Lihat Semua Tiket</a>
         </div>
     </div>
@@ -70,10 +70,10 @@
         <div class="card-header">
             <h3><i class="fas fa-list"></i> Tiket Saya</h3>
             <div class="d-flex gap-1 flex-wrap">
-                <a href="{{ route('tickets.create') }}" class="btn btn-sm btn-success">
+                <a href="{{ route('tickets.create') }}" class="btn btn-sm btn-success btn-action-create">
                     <i class="fas fa-plus"></i> Buat Tiket Baru
                 </a>
-                <a href="{{ route('tickets.index') }}" class="btn btn-sm btn-primary">Lihat Semua</a>
+                <a href="{{ route('tickets.index') }}" class="btn btn-sm btn-primary btn-action-detail">Lihat Semua</a>
             </div>
         </div>
         <div class="card-body">
@@ -100,7 +100,7 @@
                             <td>{{ $ticket->assignedTechnician ? $ticket->assignedTechnician->name : '-' }}</td>
                             <td>{{ $ticket->created_at->format('d/m/Y H:i') }}</td>
                             <td>
-                                <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary">Detail</a>
+                                <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary btn-action-detail">Detail</a>
                             </td>
                         </tr>
                         @empty

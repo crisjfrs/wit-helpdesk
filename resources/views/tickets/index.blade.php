@@ -8,7 +8,7 @@
     <div class="card-header">
         <h3><i class="fas fa-list"></i> Daftar Tiket</h3>
         @can('create', App\Models\Ticket::class)
-        <a href="{{ route('tickets.create') }}" class="btn btn-success btn-sm">
+        <a href="{{ route('tickets.create') }}" class="btn btn-success btn-sm btn-action-create">
             <i class="fas fa-plus"></i> Buat Tiket Baru
         </a>
         @endcan
@@ -32,7 +32,7 @@
                     </option>
                     @endforeach
                 </select>
-                <button type="submit" class="btn btn-primary btn-sm">
+                <button type="submit" class="btn btn-primary btn-sm btn-action-search">
                     <i class="fas fa-search"></i> Cari
                 </button>
                 @if(request()->hasAny(['search', 'status', 'category']))
@@ -75,7 +75,7 @@
                     @endif
                     <td>{{ $ticket->created_at->format('d/m/Y H:i') }}</td>
                     <td>
-                        <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary">Detail</a>
+                        <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary btn-action-detail">Detail</a>
                     </td>
                 </tr>
                 @empty

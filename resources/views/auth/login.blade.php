@@ -9,7 +9,7 @@
             <div class="auth-brand">
                 <div class="auth-brand-mark"><i class="fas fa-headset"></i></div>
                 <div>
-                    <div class="auth-card-title">Helpdesk System</div>
+                    <div class="auth-card-title">WIT Helpdesk System</div>
                     <div class="auth-card-subtitle">Silakan login untuk melanjutkan</div>
                 </div>
             </div>

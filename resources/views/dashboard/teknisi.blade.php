@@ -56,7 +56,7 @@
     <div class="card">
         <div class="card-header">
             <h3><i class="fas fa-list"></i> Tiket Ditugaskan ke Saya</h3>
-            <a href="{{ route('tickets.index') }}" class="btn btn-sm btn-primary">Lihat Semua</a>
+            <a href="{{ route('tickets.index') }}" class="btn btn-sm btn-primary btn-action-detail">Lihat Semua</a>
         </div>
         <div class="card-body">
             <div class="table-shell">
@@ -82,7 +82,7 @@
                             <td><span class="badge priority-{{ $ticket->priority }}">{{ ucfirst($ticket->priority) }}</span></td>
                             <td>{{ $ticket->created_at->format('d/m/Y H:i') }}</td>
                             <td>
-                                <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary">Detail</a>
+                                <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-sm btn-primary btn-action-detail">Detail</a>
                             </td>
                         </tr>
                         @empty

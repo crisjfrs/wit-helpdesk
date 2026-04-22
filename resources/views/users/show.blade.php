@@ -9,7 +9,7 @@
         <h3><i class="fas fa-user"></i> Detail User</h3>
         <div>
             @can('update', $user)
-            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">
+            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning btn-action-edit">
                 <i class="fas fa-edit"></i> Edit
             </a>
             @endcan

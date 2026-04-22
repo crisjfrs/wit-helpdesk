@@ -7,7 +7,7 @@
 <div class="card">
     <div class="card-header">
         <h3><i class="fas fa-users"></i> Manajemen User</h3>
-        <a href="{{ route('users.create') }}" class="btn btn-success btn-sm">
+        <a href="{{ route('users.create') }}" class="btn btn-success btn-sm btn-action-create">
             <i class="fas fa-plus"></i> Tambah User
         </a>
     </div>
@@ -21,7 +21,7 @@
                     <option value="teknisi" {{ request('role') == 'teknisi' ? 'selected' : '' }}>Teknisi</option>
                     <option value="user" {{ request('role') == 'user' ? 'selected' : '' }}>User</option>
                 </select>
-                <button type="submit" class="btn btn-primary btn-sm btn-search-submit">
+                <button type="submit" class="btn btn-primary btn-sm btn-search-submit btn-action-search">
                     <i class="fas fa-search"></i> Cari
                 </button>
             </div>
@@ -52,12 +52,12 @@
                     <td>{{ $user->created_at->format('d/m/Y') }}</td>
                     <td style="min-width: 300px;">
                         <div class="action-buttons" style="display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; white-space: nowrap;">
-                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary">Detail</a>
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary btn-action-detail">Detail</a>
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning btn-action-edit">Edit</a>
                             @can('toggleActive', $user)
                             <form action="{{ route('users.toggleActive', $user->id) }}" method="POST" style="display: inline-block; margin: 0;">
                                 @csrf
-                                <button type="submit" class="btn btn-sm {{ $user->is_active ? 'btn-danger' : 'btn-success' }}">
+                                <button type="submit" class="btn btn-sm btn-action-toggle {{ $user->is_active ? 'btn-danger' : 'btn-success' }}">
                                     {{ $user->is_active ? 'Nonaktifkan' : 'Aktifkan' }}
                                 </button>
                             </form>
@@ -66,7 +66,7 @@
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline-block; margin: 0;" onsubmit="return confirm('Yakin ingin menghapus user ini?');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                <button type="submit" class="btn btn-sm btn-danger btn-action-delete">Hapus</button>
                             </form>
                             @endcan
                         </div>

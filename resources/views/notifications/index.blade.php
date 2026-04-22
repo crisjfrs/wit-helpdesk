@@ -24,7 +24,7 @@
                     </div>
                     <div>
                         @if($notification->ticket_id)
-                        <a href="{{ route('tickets.show', $notification->ticket_id) }}" class="btn btn-sm btn-primary">Lihat Tiket</a>
+                        <a href="{{ route('tickets.show', $notification->ticket_id) }}" class="btn btn-sm btn-primary btn-action-detail">Lihat Tiket</a>
                         @endif
                         @if(!$notification->is_read)
                         <form action="{{ route('notifications.read', $notification->id) }}" method="POST" style="display: inline;">

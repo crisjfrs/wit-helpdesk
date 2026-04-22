@@ -7,7 +7,7 @@
 <div class="card">
     <div class="card-header">
         <h3><i class="fas fa-tags"></i> Manajemen Kategori</h3>
-        <a href="{{ route('categories.create') }}" class="btn btn-success btn-sm">
+        <a href="{{ route('categories.create') }}" class="btn btn-success btn-sm btn-action-create">
             <i class="fas fa-plus"></i> Tambah Kategori
         </a>
     </div>
@@ -20,7 +20,7 @@
                     <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
                     <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Nonaktif</option>
                 </select>
-                <button type="submit" class="btn btn-primary btn-sm">
+                <button type="submit" class="btn btn-primary btn-sm btn-action-search">
                     <i class="fas fa-search"></i> Cari
                 </button>
                 @if(request()->hasAny(['search', 'status']))
@@ -58,18 +58,18 @@
                     <td>{{ $category->tickets()->count() }}</td>
                     <td style="min-width: 300px;">
                         <div class="action-buttons" style="display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; white-space: nowrap;">
-                            <a href="{{ route('categories.show', $category->id) }}" class="btn btn-sm btn-primary">Detail</a>
-                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{{ route('categories.show', $category->id) }}" class="btn btn-sm btn-primary btn-action-detail">Detail</a>
+                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-warning btn-action-edit">Edit</a>
                             <form action="{{ route('categories.toggleActive', $category->id) }}" method="POST" style="display: inline-block; margin: 0;">
                                 @csrf
-                                <button type="submit" class="btn btn-sm {{ $category->is_active ? 'btn-danger' : 'btn-success' }}">
+                                <button type="submit" class="btn btn-sm btn-action-toggle {{ $category->is_active ? 'btn-danger' : 'btn-success' }}">
                                     {{ $category->is_active ? 'Nonaktifkan' : 'Aktifkan' }}
                                 </button>
                             </form>
                             <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display: inline-block; margin: 0;" onsubmit="return confirm('Yakin ingin menghapus kategori ini?');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                <button type="submit" class="btn btn-sm btn-danger btn-action-delete">Hapus</button>
                             </form>
                         </div>
                     </td>
