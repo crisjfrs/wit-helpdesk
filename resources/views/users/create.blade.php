@@ -52,6 +52,18 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label class="form-label">Telegram Chat ID</label>
+                <input type="text" name="telegram_chat_id" class="form-control" value="{{ old('telegram_chat_id') }}" placeholder="Contoh: -1001234567890">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label d-flex align-items-center gap-2">
+                    <input type="checkbox" name="telegram_notifications_enabled" value="1" {{ old('telegram_notifications_enabled', 1) ? 'checked' : '' }}>
+                    Aktifkan notifikasi Telegram
+                </label>
+            </div>
+
             <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-save"></i> Simpan

@@ -1,0 +1,22 @@
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies
+/node_modules
+/vendor
+
+# Cache & Build
+/bootstrap/cache/
+/storage/
+.phpunit.result.cache
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/

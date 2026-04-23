@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendTelegramTicketNotification;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Models\Ticket;
@@ -162,6 +163,8 @@ class TicketController extends Controller
                 'message' => "Tiket baru dibuat: {$ticket->title}",
             ]);
         }
+
+        SendTelegramTicketNotification::dispatch($ticket);
 
         return redirect()->route('tickets.show', $ticket->id)
             ->with('success', 'Tiket berhasil dibuat.');

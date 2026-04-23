@@ -27,9 +27,27 @@ deploy:
   script:
     - cd /home/wit/ticketone
     - git remote set-url origin https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/wit-id/pkl-2026/ticketone.git
+    - git fetch origin development
     - git checkout development
-    - git pull origin development
+    - git reset --hard origin/development
+    - git clean -fd
     - docker compose down
     - docker compose up -d --build
+    # Wait for MySQL to be ready
+    - |
+      echo "Waiting for MySQL to be ready..."
+      for i in $(seq 1 30); do
+        if docker compose exec -T db mysqladmin ping -u root --silent; then
+          echo "MySQL is up and running!"
+          break
+        fi
+        echo "MySQL not ready yet... ($i/30)"
+        sleep 3
+        if [ $i -eq 30 ]; then echo "Error: MySQL timeout"; exit 1; fi
+      done
+    # Run migrations
+    - docker compose exec -T app php artisan migrate --force
+    # Clear config cache
+    - docker compose exec -T app php artisan optimize:clear
   only:
     - development

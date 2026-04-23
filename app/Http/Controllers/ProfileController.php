@@ -28,7 +28,12 @@ class ProfileController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'telegram_chat_id' => ['nullable', 'string', 'max:30', 'regex:/^-?\\d+$/'],
+            'telegram_notifications_enabled' => 'nullable|boolean',
         ]);
+
+        $data['telegram_chat_id'] = trim((string) ($data['telegram_chat_id'] ?? '')) ?: null;
+        $data['telegram_notifications_enabled'] = $request->boolean('telegram_notifications_enabled');
 
         $user->update($data);
 

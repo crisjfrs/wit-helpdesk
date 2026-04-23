@@ -24,6 +24,8 @@ class StoreUserRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required|in:admin,teknisi,user',
+            'telegram_chat_id' => ['nullable', 'string', 'max:30', 'regex:/^-?\\d+$/'],
+            'telegram_notifications_enabled' => 'nullable|boolean',
         ];
     }
 }

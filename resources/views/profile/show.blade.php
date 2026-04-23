@@ -28,6 +28,19 @@
                 <input type="text" class="form-control" value="{{ ucfirst($user->role) }}" disabled>
             </div>
 
+            <div class="form-group">
+                <label class="form-label">Telegram Chat ID</label>
+                <input type="text" name="telegram_chat_id" class="form-control" value="{{ old('telegram_chat_id', $user->telegram_chat_id) }}" placeholder="Contoh: -1001234567890">
+                <small class="text-muted">Isi chat ID pribadi/grup Telegram untuk menerima notifikasi tiket.</small>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label d-flex align-items-center gap-2">
+                    <input type="checkbox" name="telegram_notifications_enabled" value="1" {{ old('telegram_notifications_enabled', $user->telegram_notifications_enabled) ? 'checked' : '' }}>
+                    Aktifkan notifikasi Telegram
+                </label>
+            </div>
+
             <button type="submit" class="btn btn-primary">
                 <i class="fas fa-save"></i> Simpan Perubahan
             </button>
