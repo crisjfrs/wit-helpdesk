@@ -2,6 +2,7 @@
 
 @section('title', 'Dashboard Teknisi')
 @section('page-title', 'Dashboard Teknisi')
+@section('page-subtitle', 'Prioritas kerja dan progres penugasan')
 
 @section('content')
 <div class="dashboard-shell">

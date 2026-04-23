@@ -2,6 +2,7 @@
 
 @section('title', 'Dashboard Admin')
 @section('page-title', 'Dashboard Admin')
+@section('page-subtitle', 'Ringkasan performa helpdesk')
 
 @section('content')
 <div class="dashboard-shell">

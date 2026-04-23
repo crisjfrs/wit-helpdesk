@@ -2,6 +2,7 @@
 
 @section('title', 'Dashboard User')
 @section('page-title', 'Dashboard User')
+@section('page-subtitle', 'Status tiket pribadi Anda')
 
 @section('content')
 <div class="dashboard-shell">

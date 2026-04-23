@@ -28,6 +28,7 @@
                 </div>
             </div>
             <ul class="sidebar-menu">
+                <li class="sidebar-section-title">Utama</li>
                 <li>
                     <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="fas fa-home"></i> Dashboard
@@ -49,6 +50,7 @@
                 </li>
                 
                 @if(auth()->user()->isAdmin())
+                <li class="sidebar-section-title">Admin</li>
                 <li>
                     <a href="{{ route('users.index') }}" class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
                         <i class="fas fa-users"></i> Manajemen User
@@ -78,6 +80,22 @@
                     </a>
                 </li>
             </ul>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user-row">
+                    <div class="sidebar-user-avatar">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</div>
+                    <div class="sidebar-user-copy">
+                        <strong>{{ auth()->user()->name }}</strong>
+                        <span>{{ ucfirst(auth()->user()->role) }}</span>
+                    </div>
+                    <form action="{{ route('logout') }}" method="POST" class="sidebar-logout-form">
+                        @csrf
+                        <button type="submit" class="sidebar-logout-icon" aria-label="Logout" title="Logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </aside>
 
         <!-- Main Content -->
@@ -86,18 +104,12 @@
             <nav class="navbar">
                 <div class="navbar-left">
                     <h1>@yield('page-title', 'Dashboard')</h1>
+                    <p>@yield('page-subtitle', 'Ringkasan operasional')</p>
                 </div>
                 <div class="navbar-right">
                     <div class="notification-badge" onclick="window.location.href='{{ route('notifications.index') }}'">
                         <i class="fas fa-bell fa-lg" style="color: var(--primary);"></i>
                         <span class="badge" id="notification-count">0</span>
-                    </div>
-                    <div class="d-flex align-center gap-2">
-                        <span>{{ auth()->user()->name }}</span>
-                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-outline">Logout</button>
-                        </form>
                     </div>
                 </div>
             </nav>
@@ -136,6 +148,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
+        @auth
         // Notification polling
         function updateNotificationCount() {
             $.ajax({
@@ -155,6 +168,7 @@
         // Update every 30 seconds
         setInterval(updateNotificationCount, 30000);
         updateNotificationCount();
+        @endauth
 
         // Password toggle function (global)
         function togglePassword(inputId) {
